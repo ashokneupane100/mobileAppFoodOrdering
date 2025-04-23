@@ -21,10 +21,12 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     padding: 10,
     borderRadius: 20,
+    flex:1,
+    margin:5,
   },
   image: {
-    width: 200,
-    height: 200,
+    width: "100%",
+    aspectRatio:1,
   },
   title: {
     fontSize: 30,
