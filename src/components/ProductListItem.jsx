@@ -1,16 +1,19 @@
 // Assuming this file is at src/screens/TabOneScreen.jsx
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image,Pressable } from "react-native";
+import { Link } from "expo-router";
 
 import Colors from "../constants/Colors";
 
 const ProductListItem = ({ product }) => {
-  console.log(product);
-  return (
-    <View style={styles.container}>
+return (
+  <Link href={`/${product.id}`} asChild>
+    <Pressable  style={styles.container}>
       <Image source={{ uri: product.image }} style={styles.image} />
       <Text style={styles.title}>{product.name}</Text>
       <Text style={styles.price}>Rs. {product.price}</Text>
-    </View>
+     
+    </Pressable>
+    </Link>
   );
 };
 
@@ -29,11 +32,11 @@ const styles = StyleSheet.create({
     aspectRatio:1,
   },
   title: {
-    fontSize: 30,
+    fontSize: 20,
     fontWeight: "bold",
   },
   price: {
-    fontSize: 18,
+    fontSize: 15,
     fontWeight: "600",
     marginVertical: 10,
     color: Colors.light.tint,
