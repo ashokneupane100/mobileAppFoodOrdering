@@ -1,14 +1,15 @@
-import { View, Text, Image, StyleSheet } from "react-native";
-import React from "react";
+import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
+import React, { useState } from "react";
 import { Stack, useLocalSearchParams } from "expo-router";
 import products from "../../../../assets/data/products";
 
-const sizes = ["Small", "Md", "Lg", "Extra Large"];
+const sizes = ["Sm", "Md", "Lg", "XL"];
 const defaultPizzaImage =
   "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/food/default.png";
 
 export default function ProductDetailsScreen() {
   const { id } = useLocalSearchParams();
+  const [selectedSize, setSelectedSize] = useState("Md");
   const product = products.find((p) => p.id.toString() === id);
 
   if (!product) {
@@ -33,9 +34,16 @@ export default function ProductDetailsScreen() {
       <Text style={styles.label}>Select Size:</Text>
       <View style={styles.sizes}>
         {sizes.map((size) => (
-          <View style={styles.size} key={size}>
+          <TouchableOpacity
+            style={[
+              styles.size,
+              { backgroundColor: selectedSize === size ? "lightgreen" : "gainsboro" },
+            ]}
+            key={size}
+            onPress={() => setSelectedSize(size)}
+          >
             <Text style={styles.sizeText}>{size}</Text>
-          </View>
+          </TouchableOpacity>
         ))}
       </View>
 
@@ -68,8 +76,8 @@ const styles = StyleSheet.create({
   size: {
     backgroundColor: "gainsboro",
     padding: 10,
-    borderRadius: 10,
-    minWidth: 80,
+    borderRadius: 10, // Changed from 50 for better text fit
+    minWidth: 60, // Adjusted for short labels (Sm, Md)
     alignItems: "center",
   },
   sizeText: {
