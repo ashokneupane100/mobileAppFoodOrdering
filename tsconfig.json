@@ -13,5 +13,5 @@
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts"
-, "src/components/ProductListItem.jsx", "src/app/(tabs)/index.jsx", "src/app/(tabs)/_layout.tsx"  ]
+, "src/components/ProductListItem.jsx", "src/app/(tabs)/index.jsx", "src/app/(tabs)/_layout.tsx", "src/provider/CartProvider.js", "src/app/cart.jsx"  ]
 }
